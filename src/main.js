@@ -11,7 +11,7 @@ Hooks.on("getSceneControlButtons", controls => {
 	if (!ignoreVisionToggle) {
 		ignoreVisionToggle = {
 			name: "ignoreVision",
-			title: "Ignore token vision",
+			title: game.i18n.localize("ignore-vision.toggle"),
 			icon: "far fa-eye-slash",
 			toggle: true,
 			active: ignoreVision,

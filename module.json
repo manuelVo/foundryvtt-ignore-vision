@@ -16,6 +16,18 @@
 		"src/libwrapper_shim.js",
 		"src/main.js"
 	],
+	"languages": [
+		{
+			"lang": "de",
+			"name": "Deutsch",
+			"path": "lang/de.json"
+		},
+		{
+			"lang": "en",
+			"name": "English",
+			"path": "lang/en.json"
+		}
+	],
 	"url": "https://github.com/manuelVo/foundryvtt-ignore-vision",
 	"download": "https://github.com/manuelVo/foundryvtt-ignore-vision/archive/master.zip",
 	"manifest": "https://raw.githubusercontent.com/manuelVo/foundryvtt-ignore-vision/master/module.json",

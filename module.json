@@ -31,6 +31,7 @@
 	"url": "https://github.com/manuelVo/foundryvtt-ignore-vision",
 	"download": "https://github.com/manuelVo/foundryvtt-ignore-vision/archive/master.zip",
 	"manifest": "https://raw.githubusercontent.com/manuelVo/foundryvtt-ignore-vision/master/module.json",
+	"readme": "https://github.com/manuelVo/foundryvtt-ignore-vision/blob/master/README.md",
 	"bugs": "https://github.com/manuelVo/foundryvtt-ignore-vision/issues",
 	"allowBugReporter": true
 }

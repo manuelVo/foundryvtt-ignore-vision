@@ -1,3 +1,6 @@
 {
-	"ignore-vision.toggle": "Ignore Token Vision"
+	"ignore-vision": {
+		"keybinding": "Toggle Token Vision",
+		"toggle": "Ignore Token Vision"
+	}
 }

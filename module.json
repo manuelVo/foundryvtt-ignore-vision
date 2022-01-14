@@ -3,7 +3,7 @@
 	"title": "Ignore Vision",
 	"description": "Allows the GM to continue seeing everything while selecting tokens with vision",
 	"version": "1.0.0",
-	"minimumCoreVersion" : "0.8.9",
+	"minimumCoreVersion" : "9.238",
 	"compatibleCoreVersion" : "9",
 	"authors": [
 		{

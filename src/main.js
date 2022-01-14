@@ -5,6 +5,12 @@ let ignoreVisionToggle;
 Hooks.once("init", () => {
 	window.ignoreVision = false;
 	libWrapper.register("ignore-vision", "SightLayer.prototype.tokenVision", tokenVision, "MIXED");
+
+	game.keybindings.register("ignore-vision", "toggleVision", {
+		name: "ignore-vision.keybinding",
+		onDown: handleKeybinding,
+		restricted: true,
+	});
 });
 
 Hooks.on("getSceneControlButtons", controls => {
@@ -22,6 +28,13 @@ Hooks.on("getSceneControlButtons", controls => {
 	const tokenControls = controls.find(group => group.name === "token").tools;
 	tokenControls.push(ignoreVisionToggle);
 });
+
+function handleKeybinding() {
+	const newToggleState = !ignoreVision
+	ignoreVisionToggle.active = newToggleState;
+	ui.controls.render();
+	handleToggle(newToggleState);
+}
 
 function handleToggle(toggled) {
 	ignoreVision = toggled;

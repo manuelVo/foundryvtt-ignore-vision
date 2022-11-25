@@ -1,58 +1,61 @@
-import { libWrapper } from "./libwrapper_shim.js";
+let ignoreVisionToggle
 
-let ignoreVisionToggle;
+Hooks.once('init', () => {
+  window.ignoreVision = false
+  libWrapper.register(
+    'ignore-vision',
+    'SightLayer.prototype.tokenVision',
+    tokenVision,
+    'MIXED',
+  )
 
-Hooks.once("init", () => {
-	window.ignoreVision = false;
-	libWrapper.register("ignore-vision", "SightLayer.prototype.tokenVision", tokenVision, "MIXED");
+  game.keybindings.register('ignore-vision', 'toggleVision', {
+    name: 'ignore-vision.keybinding',
+    onDown: handleKeybinding,
+    restricted: true,
+  })
+})
 
-	game.keybindings.register("ignore-vision", "toggleVision", {
-		name: "ignore-vision.keybinding",
-		onDown: handleKeybinding,
-		restricted: true,
-	});
-});
-
-Hooks.on("getSceneControlButtons", controls => {
-	if (!ignoreVisionToggle) {
-		ignoreVisionToggle = {
-			name: "ignoreVision",
-			title: game.i18n.localize("ignore-vision.toggle"),
-			icon: "far fa-eye-slash",
-			toggle: true,
-			active: ignoreVision,
-			onClick: handleToggle,
-			visible: game.user.isGM,
-		};
-	}
-	const tokenControls = controls.find(group => group.name === "token").tools;
-	tokenControls.push(ignoreVisionToggle);
-});
+Hooks.on('getSceneControlButtons', (controls) => {
+  if (!ignoreVisionToggle) {
+    ignoreVisionToggle = {
+      name: 'ignoreVision',
+      title: game.i18n.localize('ignore-vision.toggle'),
+      icon: 'far fa-eye-slash',
+      toggle: true,
+      active: ignoreVision,
+      onClick: handleToggle,
+      visible: game.user.isGM,
+    }
+  }
+  const tokenControls = controls.find((group) => group.name === 'token').tools
+  tokenControls.push(ignoreVisionToggle)
+})
 
 function handleKeybinding() {
-	const newToggleState = !ignoreVision
-	ignoreVisionToggle.active = newToggleState;
-	ui.controls.render();
-	handleToggle(newToggleState);
+  const newToggleState = !ignoreVision
+  ignoreVisionToggle.active = newToggleState
+  ui.controls.render()
+  handleToggle(newToggleState)
 }
 
 function handleToggle(toggled) {
-	ignoreVision = toggled;
-	canvas.perception.schedule({
-		sight: {
-			initialize: true,
-			refresh: true,
-			forceUpdateFog: true,
-		},
-		lighting: { refresh: true },
-		sounds: { refresh: true },
-		foreground: { refresh: true },
-	});
+  ignoreVision = toggled
+  canvas.perception.schedule({
+    sight: {
+      initialize: true,
+      refresh: true,
+      forceUpdateFog: true,
+    },
+    lighting: { refresh: true },
+    sounds: { refresh: true },
+    foreground: { refresh: true },
+  })
 }
 
 function tokenVision(wrapped) {
-	if (ignoreVision && game.user.isGM) {
-		return false;
-	}
-	return wrapped();
+  if (ignoreVision && game.user.isGM) {
+    return false
+  }
+  return wrapped()
 }

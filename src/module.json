@@ -1,18 +1,18 @@
 {
-  "id": "ignore-vision",
-  "title": "Ignore Vision",
-  "description": "Allows the GM to continue seeing everything while selecting tokens with vision",
-  "version": "2.0.0",
+	"id": "ignore-vision",
+	"title": "Ignore Vision",
+	"description": "Allows the GM to continue seeing everything while selecting tokens with vision",
+	"version": "2.0.0",
 	"authors": [
-    {
-      "name": "Manuel Vögele",
-      "email": "develop@manuel-voegele.de",
-      "discord": "Stäbchenfisch#5107"
-    },
-    {
-      "name": "MarkPearce",
-      "github": "https://github.com/MarkPearce"
-    },
+		{
+			"name": "Manuel Vögele",
+			"email": "develop@manuel-voegele.de",
+			"discord": "Stäbchenfisch#5107"
+		},
+		{
+			"name": "MarkPearce",
+			"github": "https://github.com/MarkPearce"
+		},
 		{
 			"name": "p4535992",
 			"url": "https://github.com/p4535992",
@@ -59,11 +59,11 @@
 			"name": "English",
 			"path": "languages/en.json"
 		},
-    {
-      "lang": "de",
-      "name": "Deutsch",
-      "path": "languages/de.json"
-    }
+		{
+			"lang": "de",
+			"name": "Deutsch",
+			"path": "languages/de.json"
+		}
 	],
 	"packs": [],
 	"systems": [],
@@ -85,7 +85,14 @@
 	"allowBugReporter": true,
 	"relationships": {
 		"systems": [],
-		"requires": [],
+		"requires": [
+			{
+				"id": "lib-wrapper",
+				"type": "module",
+				"manifest": "https://github.com/ruipin/fvtt-lib-wrapper/releases/latest/download/module.json",
+				"compatibility": {}
+			}
+		],
 		"conflicts": []
 	}
 }

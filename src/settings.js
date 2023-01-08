@@ -9,6 +9,15 @@ export const registerSettings = function () {
 		default: false,
 		type: Boolean,
 	});
+
+	game.settings.register(CONSTANTS.MODULE_NAME, "noTokenAnimation", {
+		name: `${CONSTANTS.MODULE_NAME}.setting.noTokenAnimation.name`,
+		hint: `${CONSTANTS.MODULE_NAME}.setting.noTokenAnimation.hint`,
+		scope: "world",
+		config: true,
+		default: false,
+		type: Boolean,
+	});
 };
 
 export const registerKeyBindings = function () {

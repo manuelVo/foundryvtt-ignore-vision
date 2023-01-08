@@ -51,6 +51,12 @@ Hooks.on("getSceneControlButtons", (controls) => {
 	tokenControls.push(ignoreVisionToggle);
 });
 
+Hooks.on("preUpdateToken", (tokenDoc, change, options) => {
+	if (game.settings.get(CONSTANTS.MODULE_NAME, "noTokenAnimation")) {
+		options.animate = false;
+	}
+});
+
 export function handleKeybinding() {
 	const newToggleState = !ignoreVision;
 	ignoreVisionToggle.active = newToggleState;

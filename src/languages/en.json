@@ -11,6 +11,10 @@
 			"disableVisionOnDragAsGM": {
 				"name": "Disable the token vision when is dragged from a GM",
 				"hint": "Disables the vision limitation when dragging a token as a GM (Useful for not show the map to player when you move some token on the map)"
+			},
+			"noTokenAnimation": {
+				"name": "Disable Token Movement Animations",
+				"hint": "Dragging and dropping tokens around the map will resolve instantly instead of sliding."
 			}
 		}
 	}

@@ -1,7 +1,4 @@
-## 1.1.0
-### New features
-- Toggling the vision can now be bound to a keybinding
+### 0.0.1-2
 
+- First release
 
-## 1.0.0
-Initial release

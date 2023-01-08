@@ -1,6 +1,11 @@
 {
 	"ignore-vision": {
-		"keybinding": "Toggle Token Vision",
+		"keybinding": {
+			"toggleVision": {
+				"name": "Toggle Token Vision",
+				"hint": " "
+			}
+		},
 		"toggle": "Ignore Token Vision",
 		"setting": {
 			"disableVisionOnDragAsGM": {

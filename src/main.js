@@ -1,20 +1,18 @@
 import CONSTANTS from "./constants.js";
-import { registerSettings } from "./settings.js";
+import { registerKeyBindings, registerSettings } from "./settings.js";
 
+let isMouseDown = false;
+let isTokenWithSight = false;
 let ignoreVisionToggle;
 
 Hooks.once("init", () => {
 	window.ignoreVision = false;
 
 	registerSettings();
+	registerKeyBindings();
 
-	libWrapper.register(CONSTANTS.MODULE_NAME, "SightLayer.prototype.tokenVision", tokenVision, "MIXED");
-
-	game.keybindings.register(CONSTANTS.MODULE_NAME, "toggleVision", {
-		name: `${CONSTANTS.MODULE_NAME}.keybinding`,
-		onDown: handleKeybinding,
-		restricted: true,
-	});
+	// libWrapper.register(CONSTANTS.MODULE_NAME, "SightLayer.prototype.tokenVision", tokenVision, "MIXED");
+	libWrapper.register(CONSTANTS.MODULE_NAME, "CanvasVisibility.prototype.tokenVision", tokenVision, "MIXED");
 
 	if (game.settings.get(CONSTANTS.MODULE_NAME, "disableVisionOnDragAsGM")) {
 		libWrapper.register(
@@ -53,7 +51,7 @@ Hooks.on("getSceneControlButtons", (controls) => {
 	tokenControls.push(ignoreVisionToggle);
 });
 
-function handleKeybinding() {
+export function handleKeybinding() {
 	const newToggleState = !ignoreVision;
 	ignoreVisionToggle.active = newToggleState;
 	ui.controls.render();
@@ -86,13 +84,13 @@ async function onDragLeftStartHandler(wrapped, ...args) {
 		return wrapped.apply(this, args);
 	}
 
-	inputDown = true;
+	isMouseDown = true;
 
 	//Check to see if any of the controlled tokens use sight
 	//Check to see if any token is interactive
 	for (let t of canvas.tokens.controlled) {
 		if (t.interactive && t.document.sight.enabled) {
-			hasValidToken = true;
+			isTokenWithSight = true;
 			break;
 		}
 	}
@@ -101,7 +99,7 @@ async function onDragLeftStartHandler(wrapped, ...args) {
 }
 
 async function onDragLeftMoveHandler(wrapped, ...args) {
-	if (!game.user.isGM || !canvas.scene.tokenVision || !inputDown || !hasValidToken) {
+	if (!game.user.isGM || !canvas.scene.tokenVision || !isMouseDown || !isTokenWithSight) {
 		return wrapped.apply(this, args);
 	}
 
@@ -111,25 +109,25 @@ async function onDragLeftMoveHandler(wrapped, ...args) {
 	return wrapped.apply(this, args);
 }
 
-function endDrag() {
-	if (!game.user.isGM || !inputDown) {
+function endDragHandler() {
+	if (!game.user.isGM || !isMouseDown) {
 		return;
 	}
-	inputDown = false;
+	isMouseDown = false;
 
-	if (hasValidToken) {
+	if (isTokenWithSight) {
 		canvas.scene.tokenVision = true;
 		canvas.perception.refresh();
-		hasValidToken = false;
+		isTokenWithSight = false;
 	}
 }
 
 async function onDragLeftDropHandler(wrapped, ...args) {
-	endDrag();
+	endDragHandler();
 	return wrapped.apply(this, args);
 }
 
 async function onDragLeftCancelHandler(wrapped, ...args) {
-	endDrag();
+	endDragHandler();
 	return wrapped.apply(this, args);
 }

@@ -1,8 +1,8 @@
 # Ignore Vision
 
-![Latest Release Download Count](https://img.shields.io/github/downloads/manuelVo/foundryvtt-ignore-vision/latest/module.zip?color=2b82fc&label=DOWNLOADS&style=for-the-badge) 
+![Latest Release Download Count](https://img.shields.io/github/downloads/manuelVo/foundryvtt-ignore-vision/latest/module.zip?color=2b82fc&label=DOWNLOADS&style=for-the-badge)
 
-[![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Fignore-vision&colorB=006400&style=for-the-badge)](https://forge-vtt.com/bazaar#package=ignore-vision) 
+[![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Fignore-vision&colorB=006400&style=for-the-badge)](https://forge-vtt.com/bazaar#package=ignore-vision)
 
 ![Foundry Core Compatible Version](https://img.shields.io/badge/dynamic/json.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2FmanuelVo%2Ffoundryvtt-ignore-vision%2Fmaster%2Fsrc%2Fmodule.json&label=Foundry%20Version&query=$.compatibility.verified&colorB=orange&style=for-the-badge)
 
@@ -37,18 +37,6 @@ To install this module manually:
 This module uses the [socketLib](https://github.com/manuelVo/foundryvtt-socketlib) library like a dependency. It is a hard dependency and it is recommended for the best experience and compatibility with other modules.
 
 ## Known Issue\Limitation
-
-## Feature
-
-### Go To Player
-
-To get the GM to a specific player (go to it's viewed scene and pan the camera to their token)
-
-![img](wiki/go_to_player.png)
-
-### Pull PLayers
-
-Make pulling multiple players to a scene easier.
 
 ## Api
 

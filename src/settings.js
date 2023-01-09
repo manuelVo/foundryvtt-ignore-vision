@@ -10,9 +10,9 @@ export const registerSettings = function () {
 		type: Boolean,
 	});
 
-	game.settings.register(CONSTANTS.MODULE_NAME, "noTokenAnimation", {
-		name: `${CONSTANTS.MODULE_NAME}.setting.noTokenAnimation.name`,
-		hint: `${CONSTANTS.MODULE_NAME}.setting.noTokenAnimation.hint`,
+	game.settings.register(CONSTANTS.MODULE_NAME, "noTokenAnimationAsGM", {
+		name: `${CONSTANTS.MODULE_NAME}.setting.noTokenAnimationAsGM.name`,
+		hint: `${CONSTANTS.MODULE_NAME}.setting.noTokenAnimationAsGM.hint`,
 		scope: "world",
 		config: true,
 		default: false,

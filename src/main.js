@@ -52,7 +52,7 @@ Hooks.on("getSceneControlButtons", (controls) => {
 });
 
 Hooks.on("preUpdateToken", (tokenDoc, change, options) => {
-	if (game.settings.get(CONSTANTS.MODULE_NAME, "noTokenAnimation")) {
+	if (game.settings.get(CONSTANTS.MODULE_NAME, "noTokenAnimationAsGM") && game.user.isGM) {
 		options.animate = false;
 	}
 });

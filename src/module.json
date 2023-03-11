@@ -2,7 +2,7 @@
 	"id": "ignore-vision",
 	"title": "Ignore Vision",
 	"description": "Allows the GM to continue seeing everything while selecting tokens with vision",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"authors": [
 		{
 			"name": "Manuel Vögele",
@@ -79,8 +79,8 @@
 	"url": "https://github.com/manuelVo/foundryvtt-ignore-vision",
 	"manifest": "https://github.com/manuelVo/foundryvtt-ignore-vision/releases/latest/download/module.json",
 	"download": "https://github.com/manuelVo/foundryvtt-ignore-vision/releases/latest/download/module.zip",
-	"readme": "https://github.com/manuelVo/foundryvtt-ignore-vision/blob/v2.0.0/README.md",
-	"changelog": "https://github.com/manuelVo/foundryvtt-ignore-vision/blob/v2.0.0/CHANGELOG.md",
+	"readme": "https://github.com/manuelVo/foundryvtt-ignore-vision/blob/v2.0.1/README.md",
+	"changelog": "https://github.com/manuelVo/foundryvtt-ignore-vision/blob/v2.0.1/CHANGELOG.md",
 	"bugs": "https://github.com/manuelVo/foundryvtt-ignore-vision/issues",
 	"allowBugReporter": true,
 	"relationships": {

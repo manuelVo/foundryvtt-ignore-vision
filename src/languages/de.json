@@ -1,6 +1,6 @@
 {
 	"ignore-vision": {
-        "keybinding": {
+		"keybinding": {
 			"toggleVision": {
 				"name": "Sicht umschalten",
 				"hint": " "

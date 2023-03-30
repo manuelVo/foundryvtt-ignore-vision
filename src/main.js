@@ -36,11 +36,10 @@ Hooks.once("init", () => {
 });
 
 Hooks.once("ready", () => {
-    // DO NOTHING
+	// DO NOTHING
 });
 
 Hooks.on("getSceneControlButtons", (controls) => {
-
 	if (!ignoreVisionToggle) {
 		ignoreVisionToggle = {
 			name: "ignoreVision",

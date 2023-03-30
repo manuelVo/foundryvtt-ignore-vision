@@ -37,7 +37,7 @@ const isStringLiteral = typescript.isStringLiteral;
 const LiteralExpression = typescript.LiteralExpression;
 const Node = typescript.Node;
 const TransformationContext = typescript.TransformationContext;
-const TSTransformer = typescript.Transformer;
+// const TSTransformer = typescript.Transformer;
 const TransformerFactory = typescript.TransformerFactory;
 const visitEachChild = typescript.visitEachChild;
 const visitNode = typescript.visitNode;
@@ -49,7 +49,7 @@ const sass = require(`gulp-sass`)(require(`sass`));
 const browserify = require(`browserify`);
 const tsify = require(`tsify`);
 
-const ts = require(`gulp-typescript`);
+// const ts = require(`gulp-typescript`);
 const git = require(`gulp-git`);
 const jest = require(`gulp-jest`).default;
 
@@ -145,51 +145,51 @@ const createTransformer = () => {
     };
 }
 
-const tsConfig = ts.createProject(`tsconfig.json`, {
-    getCustomTransformers: (_program) => ({
-        after: [createTransformer()],
-    }),
-});
+// const tsConfig = ts.createProject(`tsconfig.json`, {
+//     getCustomTransformers: (_program) => ({
+//         after: [createTransformer()],
+//     }),
+// });
 
 /********************/
 /*		BUILD		*/
 /********************/
 
-/**
- * Build TypeScript
- */
-function buildTS() {
-
-    return (
-      gulp
-        .src(`src/**/*.ts`)
-        .pipe(tsConfig())
-
-
-        // // eslint() attaches the lint output to the `eslint` property
-        // // of the file object so it can be used by other modules.
-        // .pipe(eslint())
-        // // eslint.format() outputs the lint results to the console.
-        // // Alternatively use eslint.formatEach() (see Docs).
-        // .pipe(eslint.format())
-        // // To have the process exit with an error code (1) on
-        // // lint error, return the stream and pipe to failAfterError last.
-        // .pipe(eslint.failAfterError())
-
-        .pipe(gulp.dest(`dist`))
-    );
-}
-
+// /**
+//  * Build TypeScript
+//  */
 // function buildTS() {
-//     const debug = process.env.npm_lifecycle_event !== `package`;
-//     const res = tsConfig.src()
-//         .pipe(sourcemaps.init())
-//         .pipe(tsConfig());
 
-//     return res.js
-//         .pipe(sourcemaps.write(``, { debug: debug, includeContent: true, sourceRoot: `./ts/src` }))
-//         .pipe(gulp.dest(`dist`));
+//     return (
+//       gulp
+//         .src(`src/**/*.ts`)
+//         .pipe(tsConfig())
+
+
+//         // // eslint() attaches the lint output to the `eslint` property
+//         // // of the file object so it can be used by other modules.
+//         // .pipe(eslint())
+//         // // eslint.format() outputs the lint results to the console.
+//         // // Alternatively use eslint.formatEach() (see Docs).
+//         // .pipe(eslint.format())
+//         // // To have the process exit with an error code (1) on
+//         // // lint error, return the stream and pipe to failAfterError last.
+//         // .pipe(eslint.failAfterError())
+
+//         .pipe(gulp.dest(`dist`))
+//     );
 // }
+
+// // function buildTS() {
+// //     const debug = process.env.npm_lifecycle_event !== `package`;
+// //     const res = tsConfig.src()
+// //         .pipe(sourcemaps.init())
+// //         .pipe(tsConfig());
+
+// //     return res.js
+// //         .pipe(sourcemaps.write(``, { debug: debug, includeContent: true, sourceRoot: `./ts/src` }))
+// //         .pipe(gulp.dest(`dist`));
+// // }
 
 /**
  * Build JavaScript
@@ -311,14 +311,6 @@ const copyFiles = async() => {
         for (const entity of statics) {
 
             const p = path.join(`src`, entity);
-            /* MOD 4535992
-            let p:string|null = null;
-            if (entity.endsWith(`module.json`) || entity.endsWith(`templates`) || entity.endsWith(`lang`)) {
-              p = path.join(`src`, entity);
-            } else {
-              p = path.join(`assets`, entity);
-            }
-            */
             if (fs.existsSync(p)) {
                 if (fs.lstatSync(p).isDirectory())
                     recursiveFileSearch(p, (err, res) => {
@@ -369,17 +361,6 @@ const cleanDist = async () => {
 
     await getFiles(path.resolve(`./dist`));
     for(const file of files) {
-        /* MOD 4535992
-        if (file.endsWith(`bundle.js`) ||
-            file.endsWith(`.css`) ||
-            file.endsWith(`module.json`) ||
-            file.endsWith(`templates`) ||
-            file.endsWith(`lang`)||
-            file.endsWith(`.json`) ||
-            file.endsWith(`.html`)){
-            continue;
-        }
-        */
         console.warn(`Cleaning ` + path.relative(process.cwd(), file));
         await fs.promises.unlink(file);
     }
@@ -389,8 +370,7 @@ const cleanDist = async () => {
  * Watch for changes for each build step
  */
 const buildWatch = () => {
-    // gulp.watch(`src/**/*.ts`, { ignoreInitial: false }, gulp.series(buildTS, bundleModule));
-    gulp.watch(`src/**/*.ts`, { ignoreInitial: false }, gulp.series(buildTS));
+    // gulp.watch(`src/**/*.ts`, { ignoreInitial: false }, gulp.series(buildTS));
     gulp.watch(`src/**/*.less`, { ignoreInitial: false }, buildLess);
     gulp.watch(`src/**/*.sass`, { ignoreInitial: false }, buildSASS);
     gulp.watch([`src/fonts`, `src/lang`, `src/languages`, `src/templates`, `src/*.json`], { ignoreInitial: false }, copyFiles);
@@ -413,29 +393,22 @@ const clean = async () => {
     const files = [];
 
     // If the project uses TypeScript
-    // if (fs.existsSync(path.join(`src`, mainFilePath))) { // MOD 4535992
-        files.push(
-            `lang`,
-            `languages`,
-            `fonts`,
-            `icons`,
-            `packs`,
-            `templates`,
-            `assets`,
-            `module`,
-            `index.js`,
-            `module.json`,
-            `system.json`,
-            `template.json`
-        );
-    // } // MOD 4535992
 
-    // If the project uses Less
-    /* MOD 4535992
-    // if (fs.existsSync(path.join(`src/styles/`, `${name}.less`))) {
-    //     files.push(`fonts`, `${name}.css`);
-    // }
-    */
+    files.push(
+        `lang`,
+        `languages`,
+        `fonts`,
+        `icons`,
+        `packs`,
+        `templates`,
+        `assets`,
+        `module`,
+        `index.js`,
+        `module.json`,
+        `system.json`,
+        `template.json`
+    );
+
     // Attempt to remove the files
     try {
         for (const filePath of files) {
@@ -538,13 +511,6 @@ async function packageBuild() {
             // zip.directory(`dist/`, manifest.file.name);
             const moduleJson = JSON.parse(fs.readFileSync('./src/module.json'));
             zip.directory(`dist/`, moduleJson.id);
-            /* MOD 4535992
-            zip.file(`dist/module.json`, { name: `module.json` });
-            zip.file(`dist/bundle.js`, { name: `bundle.js` });
-            zip.glob(`dist/*.css`, {cwd:__dirname});
-            zip.directory(`dist/lang`, `lang`);
-            zip.directory(`dist/templates`, `templates`);
-            */
             console.log(`Zip files`);
 
             zip.finalize();
@@ -653,9 +619,8 @@ const test = () => {
     }));
 }
 
-
-// const execBuild = gulp.parallel(buildTS, buildLess, copyFiles); // MOD 4535992
-const execBuild = gulp.parallel(buildTS, buildJS, buildMJS, buildCSS, buildLess, buildSASS, copyFiles);
+// const execBuild = gulp.parallel(buildTS, buildJS, buildMJS, buildCSS, buildLess, buildSASS, copyFiles);
+const execBuild = gulp.parallel(buildJS, buildMJS, buildCSS, buildLess, buildSASS, copyFiles);
 
 exports.build = gulp.series(clean, execBuild);
 exports.bundle = gulp.series(clean, execBuild, bundleModule, cleanDist);

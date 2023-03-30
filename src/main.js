@@ -33,97 +33,13 @@ Hooks.once("init", () => {
 			"WRAPPER"
 		);
 	}
-
-	// =========================================================
-	/*
-	libWrapper.register(
-		CONSTANTS.MODULE_NAME,
-		"TokenLayer.prototype._getCycleOrder",
-		function (wrapped, ...args) {
-			let observable = wrapped(...args);
-			if (game.settings.get(CONSTANTS.MODULE_NAME, "blindTokensControllable") == "No") {
-				observable = observable.filter((t) => {
-					return tokenHasSight(t);
-				});
-			}
-			return observable;
-		},
-		"WRAPPER"
-	);
-
-	libWrapper.register(
-		CONSTANTS.MODULE_NAME,
-		"Token.prototype.control",
-		function (wrapped, ...args) {
-			if (
-				!game.user.isGM &&
-				canvas.sight.tokenVision &&
-				!this.hasSight &&
-				game.settings.get(CONSTANTS.MODULE_NAME, "blindTokensControllable") == "No"
-			) {
-				this._controlled = true;
-				// calling the wrapped function will cause clicking a blind owned token to be act like clicking on an unowned token.
-				wrapped(...args);
-				this._controlled = false;
-				return this._controlled;
-			}
-			return wrapped(...args);
-		},
-		"WRAPPER"
-	);
-
-	libWrapper.register(
-		CONSTANTS.MODULE_NAME,
-		"Token.prototype.isVisible",
-		function (wrapped) {
-			const blindTokensControllable =
-				game.settings.get(CONSTANTS.MODULE_NAME, "blindTokensControllable") == "Yes";
-			if (!game.user.isGM && this._controlled && !tokenHasSight(this) && !blindTokensControllable) {
-				this.release();
-			}
-
-			if (wrapped()) {
-				return true;
-			}
-			if (this._controlled) {
-				return true;
-			}
-			if (!game.user.isGM) {
-				if (this.actor) {
-					let canObserve = tokenTestPerm(this, game.user, "OBSERVER");
-					if (
-						canObserve &&
-						(blindTokensControllable || !canvas.sight.tokenVision || this._isVisionSource())
-					) {
-						return true;
-					}
-				}
-			}
-			return false;
-		},
-		"MIXED"
-	);
-	*/
-	/*
-	libWrapper.register(CONSTANTS.MODULE_NAME, "Token.prototype._isVisionSource", seeWrapper, "MIXED");
-	*/
 });
 
 Hooks.once("ready", () => {
-	// =========================================================
-	/*
-	libWrapper.register(CONSTANTS.MODULE_NAME, "Token.prototype.updateSource", lightwrapper, "WRAPPER");
-
-	libWrapper.register(CONSTANTS.MODULE_NAME, "Token.prototype.updateLightSource", lightwrapper, "WRAPPER");
-	canvas.perception.initialize();
-	*/
+    // DO NOTHING
 });
 
 Hooks.on("getSceneControlButtons", (controls) => {
-	// const lighting = controls.find(c => c.name === "lighting");
-	// if (!lighting) {
-	// 	return;
-	// }
 
 	if (!ignoreVisionToggle) {
 		ignoreVisionToggle = {
@@ -231,41 +147,3 @@ async function onDragLeftCancelHandler(wrapped, ...args) {
 	endDragHandler();
 	return wrapped.apply(this, args);
 }
-
-// function seeWrapper(wrapped, ...args) {
-// 	const computerSaysYes = wrapped(); // always chain wrapper even if we may never use the result - on the chance another module needs it's version executed
-
-// 	if (game.settings.get(CONSTANTS.MODULE_NAME, "hiddenCanSee") == "No") {
-// 		return computerSaysYes;
-// 	}
-// 	// if (
-// 	// 	computerSaysYes &&
-// 	// 	(this.data._id == XXX.lastControlledToken?.data._id || !canvas.sight.tokenVision)
-// 	// ) {
-// 	// 	return true;
-// 	// }
-
-// 	if (!canvas.sight.tokenVision || !this.hasSight) {
-// 		return false; // deliberately ignore hidden status on this line
-// 	}
-// 	if (game.user.isGM) {
-// 		if (this._controlled) return true;
-// 	} else {
-// 		if (!tokenHasSight(this)) {
-// 			return false;
-// 		}
-// 	}
-
-// 	return false;
-// }
-
-// function lightwrapper(wrapped, ...args) {
-// 	if (this.data.hidden && this.emitsLight && game.settings.get(CONSTANTS.MODULE_NAME, "hiddenCanLight") == "Yes") {
-// 		this.data.hidden = false;
-// 		const wrappedresult = wrapped(...args);
-// 		this.data.hidden = true;
-// 		return wrappedresult;
-// 	} else {
-// 		return wrapped(...args);
-// 	}
-// }

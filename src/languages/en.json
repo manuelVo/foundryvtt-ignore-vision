@@ -15,19 +15,7 @@
 			"noTokenAnimationAsGM": {
 				"name": "Disable Token Movement Animations for GM",
 				"hint": "Dragging and dropping tokens around the map will resolve instantly instead of sliding."
-			},
-			"blindTokensControllable": "Blind Tokens Controllable",
-			"blindTokensControllableHint": "On scenes using Token Vision, can tokens without vision be controlled by players? If 'No' then hidden tokens, with no vision are hidden even from the owner.",
-			"blindTokensControllableYES": "Yes, Tokens with no vision can be controlled normally (Foundry standard)",
-			"blindTokensControllableNO": "No, Tokens without vision cannot be controlled by players",
-			"hiddenCanLight": "Token Light",
-			"hiddenCanLightHint": "Should Hidden Tokens be able to radiate light?",
-			"hiddenCanLightYES": "Hidden tokens may radiate light",
-			"hiddenCanLightNO": "Hidden tokens never radiate light",
-			"hiddenCanSee": "Hidden Token Vision",
-			"hiddenCanSeeHint": "Should Hidden Tokens be able to see?",
-			"hiddenCanSeeYES": "Yes, hidden tokens may have vision",
-			"hiddenCanSeeNO": "No, hidden tokens have no vision (standard Foundry behavior)"
+			}
 		}
 	}
 }

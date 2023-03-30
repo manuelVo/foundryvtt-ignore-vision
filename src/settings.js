@@ -19,47 +19,22 @@ export const registerSettings = function () {
 		type: Boolean
 	});
 
-	// game.settings.register(moduleName, "hiddenCanLight", {
-	// 	name: game.i18n.localize(CONSTANTS.MODULE_NAME + ".setting.hiddenCanLight"),
-	// 	hint: game.i18n.localize(CONSTANTS.MODULE_NAME + ".setting.hiddenCanLightHint"),
-	// 	scope: "world",
-	// 	config: true,
-	// 	type: String,
-	// 	choices: {
-	// 		Yes: game.i18n.localize(CONSTANTS.MODULE_NAME + ".setting.hiddenCanLightYES"),
-	// 		No: game.i18n.localize(CONSTANTS.MODULE_NAME + ".setting.hiddenCanLightNO"),
-	// 	},
-	// 	default: "Yes",
-	// });
-
-	// game.settings.register(moduleName, "hiddenCanSee", {
-	// 	name: game.i18n.localize(CONSTANTS.MODULE_NAME + ".setting.hiddenCanSee"),
-	// 	hint: game.i18n.localize(CONSTANTS.MODULE_NAME + ".setting.hiddenCanSeeHint"),
-	// 	scope: "world",
-	// 	config: true,
-	// 	type: String,
-	// 	choices: {
-	// 		Yes: game.i18n.localize(CONSTANTS.MODULE_NAME + ".setting.hiddenCanSeeYES"),
-	// 		No: game.i18n.localize(CONSTANTS.MODULE_NAME + ".setting.hiddenCanSeeNO"),
-	// 	},
-	// 	default: "Yes",
-	// });
-
-	// game.settings.register(moduleName, "blindTokensControllable", {
-	// 	name: game.i18n.localize(CONSTANTS.MODULE_NAME + ".setting.blindTokensControllable"),
-	// 	hint: game.i18n.localize(CONSTANTS.MODULE_NAME + ".setting.blindTokensControllableHint"),
-	// 	scope: "world",
-	// 	config: true,
-	// 	type: String,
-	// 	choices: {
-	// 		Yes: game.i18n.localize(CONSTANTS.MODULE_NAME + ".setting.blindTokensControllableYES"),
-	// 		No: game.i18n.localize(CONSTANTS.MODULE_NAME + ".setting.blindTokensControllableNO"),
-	// 	},
-	// 	default: "Yes",
-	// 	onChange: (value) => {
-	// 		API.blindControllable = value;
-	// 	},
-	// });
+    game.settings.register(MODULE_ID, SETTING_NAME, {
+        name: game.i18n.localize("NTVA.SettingName"),
+        hint: game.i18n.localize("NTVA.SettingHint"),
+        scope: "world",
+        type: String,
+        choices: {
+            "foundry": game.i18n.localize("NTVA.SettingFoundry"),
+            "disableAll": game.i18n.localize("NTVA.SettingDisableAll"),
+            "disableGM": game.i18n.localize("NTVA.SettingDisableGM"),
+        },
+        default: "foundry",
+        config: true,
+        onChange: value => {
+            parseSetting(value);
+        }
+    });
 };
 
 export const registerKeyBindings = function () {

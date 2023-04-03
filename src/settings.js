@@ -18,23 +18,6 @@ export const registerSettings = function () {
 		default: false,
 		type: Boolean
 	});
-
-	game.settings.register(MODULE_ID, SETTING_NAME, {
-		name: game.i18n.localize("NTVA.SettingName"),
-		hint: game.i18n.localize("NTVA.SettingHint"),
-		scope: "world",
-		type: String,
-		choices: {
-			foundry: game.i18n.localize("NTVA.SettingFoundry"),
-			disableAll: game.i18n.localize("NTVA.SettingDisableAll"),
-			disableGM: game.i18n.localize("NTVA.SettingDisableGM")
-		},
-		default: "foundry",
-		config: true,
-		onChange: (value) => {
-			parseSetting(value);
-		}
-	});
 };
 
 export const registerKeyBindings = function () {

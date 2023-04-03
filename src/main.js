@@ -1,5 +1,6 @@
-import CONSTANTS from "./constants.js";
-import { registerKeyBindings, registerSettings } from "./settings.js";
+const CONSTANTS = {
+	MODULE_NAME: "ignore-vision"
+}
 
 let isMouseDown = false;
 let isTokenWithSight = false;
@@ -7,9 +8,34 @@ let ignoreVisionToggle;
 
 Hooks.once("init", () => {
 	window.ignoreVision = false;
+	// registerSettings();
+	game.settings.register(CONSTANTS.MODULE_NAME, "disableVisionOnDragAsGM", {
+		name: `${CONSTANTS.MODULE_NAME}.setting.disableVisionOnDragAsGM.name`,
+		hint: `${CONSTANTS.MODULE_NAME}.setting.disableVisionOnDragAsGM.hint`,
+		scope: "world",
+		config: true,
+		default: false,
+		type: Boolean
+	});
 
-	registerSettings();
-	registerKeyBindings();
+	game.settings.register(CONSTANTS.MODULE_NAME, "noTokenAnimationAsGM", {
+		name: `${CONSTANTS.MODULE_NAME}.setting.noTokenAnimationAsGM.name`,
+		hint: `${CONSTANTS.MODULE_NAME}.setting.noTokenAnimationAsGM.hint`,
+		scope: "world",
+		config: true,
+		default: false,
+		type: Boolean
+	});
+	// registerKeyBindings();
+	game.keybindings.register(CONSTANTS.MODULE_NAME, "toggleVision", {
+		name: `${CONSTANTS.MODULE_NAME}.keybinding.toggleVision.name`,
+		name: `${CONSTANTS.MODULE_NAME}.keybinding.toggleVision.hint`,
+		// editable: [{ key: "KeyI" }],
+		// Ctrl + I
+		editable: [{ key: "KeyI", modifiers: [KeyboardManager.MODIFIER_KEYS.CONTROL] }],
+		restricted: true,
+		onDown: handleKeybinding
+	});
 
 	// libWrapper.register(CONSTANTS.MODULE_NAME, "SightLayer.prototype.tokenVision", tokenVision, "MIXED");
 	libWrapper.register(CONSTANTS.MODULE_NAME, "CanvasVisibility.prototype.tokenVision", tokenVision, "MIXED");

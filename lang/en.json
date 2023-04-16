@@ -1,0 +1,6 @@
+{
+	"ignore-vision": {
+		"keybinding": "Toggle Token Vision",
+		"toggle": "Ignore Token Vision"
+	}
+}

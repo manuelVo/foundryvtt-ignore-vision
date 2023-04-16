@@ -1,10 +1,12 @@
 {
-	"name": "ignore-vision",
+	"id": "ignore-vision",
 	"title": "Ignore Vision",
 	"description": "Allows the GM to continue seeing everything while selecting tokens with vision",
 	"version": "1.1.0",
-	"minimumCoreVersion" : "9.238",
-	"compatibleCoreVersion" : "9",
+	"compatibility": {
+		"minimum": "10.288",
+		"compatibleCoreVersion": "10"
+	},
 	"authors": [
 		{
 			"name": "Manuel Vögele",

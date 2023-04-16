@@ -4,7 +4,7 @@ let ignoreVisionToggle;
 
 Hooks.once("init", () => {
 	window.ignoreVision = false;
-	libWrapper.register("ignore-vision", "SightLayer.prototype.tokenVision", tokenVision, "MIXED");
+	libWrapper.register("ignore-vision", "CanvasVisibility.prototype.tokenVision", tokenVision, "MIXED");
 
 	game.keybindings.register("ignore-vision", "toggleVision", {
 		name: "ignore-vision.keybinding",

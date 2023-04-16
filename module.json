@@ -1,49 +1,40 @@
 {
-  "id": "ignore-vision",
-  "title": "Ignore Vision",
-  "description": "Allows the GM to continue seeing everything while selecting tokens with vision",
-  "version": "2.0.0",
-  "compatibility": {
-    "minimum": 10,
-    "verified": 10
-  },
-  "authors": [
-    {
-      "name": "Manuel Vögele",
-      "email": "develop@manuel-voegele.de",
-      "discord": "Stäbchenfisch#5107"
-    }
-  ],
-  "esmodules": ["src/main.js"],
-  "relationships": {
-    "requires": [
-      {
-        "id": "lib-wrapper",
-        "type": "module",
-        "manifest": "https://github.com/ruipin/fvtt-lib-wrapper/releases/latest/download/module.json",
-        "compatibility": {
-          "minimum": "1.12.11.0"
-        }
-      }
-    ]
-  },
-  "languages": [
-    {
-      "lang": "de",
-      "name": "Deutsch",
-      "path": "lang/de.json"
-    },
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "lang/en.json"
-    }
-  ],
-  "url": "https://github.com/manuelVo/foundryvtt-ignore-vision",
-  "download": "https://github.com/MarkPearce/foundryvtt-ignore-visions/releases/latest/download/foundryvtt-ignore-vision.zip",
-  "manifest": "https://github.com/MarkPearce/foundryvtt-ignore-vision/releases/latest/download/module.json",
-  "readme": "https://github.com/manuelVo/foundryvtt-ignore-vision/blob/master/README.md",
-  "changelog": "https://github.com/manuelVo/foundryvtt-ignore-vision/blob/master/CHANGELOG.md",
-  "bugs": "https://github.com/manuelVo/foundryvtt-ignore-vision/issues",
-  "allowBugReporter": true
+	"id": "ignore-vision",
+	"title": "Ignore Vision",
+	"description": "Allows the GM to continue seeing everything while selecting tokens with vision",
+	"version": "1.2.0",
+	"compatibility": {
+		"minimum": "10.288",
+		"compatibleCoreVersion": "10"
+	},
+	"authors": [
+		{
+			"name": "Manuel Vögele",
+			"email": "develop@manuel-voegele.de",
+			"discord": "Stäbchenfisch#5107"
+		}
+	],
+	"esmodules": [
+		"src/libwrapper_shim.js",
+		"src/main.js"
+	],
+	"languages": [
+		{
+			"lang": "de",
+			"name": "Deutsch",
+			"path": "lang/de.json"
+		},
+		{
+			"lang": "en",
+			"name": "English",
+			"path": "lang/en.json"
+		}
+	],
+	"url": "https://github.com/manuelVo/foundryvtt-ignore-vision",
+	"download": "https://github.com/manuelVo/foundryvtt-ignore-vision/archive/v1.2.0.zip",
+	"manifest": "https://raw.githubusercontent.com/manuelVo/foundryvtt-ignore-vision/master/module.json",
+	"readme": "https://github.com/manuelVo/foundryvtt-ignore-vision/blob/master/README.md",
+	"changelog": "https://github.com/manuelVo/foundryvtt-ignore-vision/blob/master/CHANGELOG.md",
+	"bugs": "https://github.com/manuelVo/foundryvtt-ignore-vision/issues",
+	"allowBugReporter": true
 }

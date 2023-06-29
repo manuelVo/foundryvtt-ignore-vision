@@ -4,7 +4,12 @@ let ignoreVisionToggle;
 
 Hooks.once("init", () => {
 	window.ignoreVision = false;
-	libWrapper.register("ignore-vision", "CanvasVisibility.prototype.tokenVision", tokenVision, "MIXED");
+	libWrapper.register(
+		"ignore-vision",
+		"CanvasVisibility.prototype.tokenVision",
+		tokenVision,
+		"MIXED"
+	);
 
 	game.keybindings.register("ignore-vision", "toggleVision", {
 		name: "ignore-vision.keybinding",
@@ -13,7 +18,7 @@ Hooks.once("init", () => {
 	});
 });
 
-Hooks.on("getSceneControlButtons", controls => {
+Hooks.on("getSceneControlButtons", (controls) => {
 	if (!ignoreVisionToggle) {
 		ignoreVisionToggle = {
 			name: "ignoreVision",
@@ -25,12 +30,12 @@ Hooks.on("getSceneControlButtons", controls => {
 			visible: game.user.isGM,
 		};
 	}
-	const tokenControls = controls.find(group => group.name === "token").tools;
+	const tokenControls = controls.find((group) => group.name === "token").tools;
 	tokenControls.push(ignoreVisionToggle);
 });
 
 function handleKeybinding() {
-	const newToggleState = !ignoreVision
+	const newToggleState = !ignoreVision;
 	ignoreVisionToggle.active = newToggleState;
 	ui.controls.render();
 	handleToggle(newToggleState);
@@ -38,16 +43,7 @@ function handleKeybinding() {
 
 function handleToggle(toggled) {
 	ignoreVision = toggled;
-	canvas.perception.schedule({
-		sight: {
-			initialize: true,
-			refresh: true,
-			forceUpdateFog: true,
-		},
-		lighting: { refresh: true },
-		sounds: { refresh: true },
-		foreground: { refresh: true },
-	});
+	canvas.effects.visibility.refresh();
 }
 
 function tokenVision(wrapped) {

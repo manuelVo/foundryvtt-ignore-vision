@@ -1,3 +1,7 @@
+## 1.2.1
+### Compatibility
+- Ignore Vision is now compatible with Foundry VTT v11
+
 ## 1.2.0
 ### Compatibility
 - Ignore Vision is now compatible with Foundry VTT v10

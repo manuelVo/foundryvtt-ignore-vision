@@ -1,6 +1,12 @@
 ## 1.2.1
+### Bug fixes
+- Fix a bug in the manifest that makes foundry display the module compatibilty as unknown
+
+
+## 1.2.1
 ### Compatibility
 - Ignore Vision is now compatible with Foundry VTT v11
+
 
 ## 1.2.0
 ### Compatibility
